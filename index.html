@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Valentine Question 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="index-page">
+
+
+<div class="container">
+  <h2>💖 Create a Valentine Prank</h2>
+
+  <div class="card">
+    <input id="name" placeholder="Enter name">
+    <button id="yes" onclick="generate()">Generate Link 🔗</button>
+    <p id="link"></p>
+  </div>
+
+  <div class="ad-box">Advertisement</div>
+</div>
+
+<footer>
+  <a href="about.html">About</a> |
+  <a href="privacy.html">Privacy</a> |
+  <a href="terms.html">Terms</a> |
+  <a href="disclaimer.html">Disclaimer</a>
+</footer>
+
+<script>
+function generate() {
+  const name = document.getElementById("name").value.trim();
+  if (!name) {
+    alert("Please enter a name 😊");
+    return;
+  }
+
+  const url = `valentine.html?name=${encodeURIComponent(name)}`;
+
+  const basePath = location.pathname.replace(/\/[^\/]*$/, "/");
+  const fullLink = `${location.origin}${basePath}${url}`;
+
+  const waMessage = `Hey 😄 I have a question for you 💖%0A%0AClick here 👉 ${fullLink}`;
+  const waLink = `https://wa.me/?text=${waMessage}`;
+
+  document.getElementById("link").innerHTML = `
+    <p class="share-text">👇 Share this link</p>
+
+    <a class="share-link" href="${fullLink}" target="_blank">
+      🔗 ${fullLink}
+    </a>
+
+    <br><br>
+
+    <a class="share-link"
+       href="${waLink}"
+       target="_blank"
+       style="background:#25D366;padding:10px 18px;border-radius:20px;display:inline-block;">
+       🟢 Share on WhatsApp
+    </a>
+  `;
+}
+</script>
+
+
+</body>
+</html>
