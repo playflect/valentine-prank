@@ -38,10 +38,10 @@ function moveNo() {
   // Safe movement zone (center area only)
   const padding = 20;
   const centerX = vw / 2;
-  const centerY = vh / 2;
+  const centerY = vh * 0.6;  
 
   const rangeX = vw * 0.25; // only 25% left/right
-  const rangeY = vh * 0.15; // very small up/down
+  const rangeY = vh * 0.12; // very small up/down
 
   const minX = centerX - rangeX;
   const maxX = centerX + rangeX - btnWidth;
@@ -100,3 +100,15 @@ setInterval(() => {
     el.remove();
   }, 10000);
 }, 400);
+const noBtn = document.getElementById("no");
+
+if (noBtn) {
+  // Desktop hover
+  noBtn.addEventListener("mouseenter", moveNo);
+
+  // Mobile touch → move but NEVER click
+  noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    moveNo();
+  });
+}
