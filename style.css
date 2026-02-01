@@ -87,6 +87,8 @@ button {
   font-weight: bold;
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+  z-index: 10;
+  position: relative;
 }
 
 #yes:hover {
@@ -135,8 +137,15 @@ button {
   color: white;
   position: fixed;          /* viewport based */
   min-width: 120px;
-  z-index: 9999;            /* always clickable */
+  
+  
+  top: 60%;
+  left: 55%;
+  
+  transform: translate(-50%, -50%);
+  z-index: 9;            /* always clickable */
   pointer-events: auto;
+  
 }
 
 /* ===============================
