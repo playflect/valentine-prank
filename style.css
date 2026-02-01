@@ -1,0 +1,262 @@
+/* ===============================
+   GLOBAL RESET & SAFETY
+   =============================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* no scrollbars ever */
+  font-family: Arial, sans-serif;
+}
+
+/* ===============================
+   GLOBAL BACKGROUND & TEXT
+   =============================== */
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
+  padding-bottom: 140px; /* space for bottom bars + footer */
+}
+
+/* ===============================
+   CONTAINER (GENERIC)
+   =============================== */
+
+.container {
+  width: 100%;
+}
+
+/* ===============================
+   INDEX PAGE ONLY (GRID / CARD)
+   =============================== */
+
+.index-page .container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.index-page .card {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 28px 22px;
+  max-width: 420px;
+  margin: 0 auto;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+}
+
+.index-page .card input,
+.index-page .card button {
+  width: 100%;
+}
+
+.index-page input {
+  padding: 14px;
+  border-radius: 25px;
+  border: none;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* ===============================
+   BUTTONS (GLOBAL)
+   =============================== */
+
+button {
+  padding: 12px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#yes {
+  background: white;
+  color: #ff4081;
+  font-weight: bold;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#yes:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+}
+
+/* ===============================
+   VALENTINE PAGE CENTERING
+   =============================== */
+
+.valentine-center {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.valentine-center #question {
+  font-size: 24px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+/* Space before gift link */
+.valentine-center .affiliate {
+  margin-top: 120px; /* 👈 adjust this value freely */
+}
+
+/* Button group on valentine page */
+.valentine-center .btn-group {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+/* ===============================
+   NO BUTTON (PRANK SAFE)
+   =============================== */
+
+#no {
+  background: #ff1744;
+  color: white;
+  position: fixed;          /* viewport based */
+  min-width: 120px;
+  z-index: 9999;            /* always clickable */
+  pointer-events: auto;
+}
+
+/* ===============================
+   AFFILIATE & ADS (SUBTLE)
+   =============================== */
+
+.affiliate {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 18px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.ad-box {
+  margin-top: 18px;
+  background: rgba(255,255,255,0.25);
+  padding: 10px;
+  font-size: 11px;
+  opacity: 0.7;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===============================
+   BOTTOM PRANK BAR
+   =============================== */
+
+#bottomBar {
+  position: fixed;
+  bottom: 70px;
+  width: 100%;
+  background: rgba(0,0,0,0.35);
+  padding: 10px;
+  font-size: 14px;
+  z-index: 7;
+}
+
+/* ===============================
+   STATS BAR (VISITORS / YES)
+   =============================== */
+
+#statsBar {
+  position: fixed;
+  bottom: 36px;
+  width: 100%;
+  background: rgba(0,0,0,0.28);
+  padding: 6px 0;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  z-index: 6;
+}
+
+/* ===============================
+   FOOTER (LEGAL)
+   =============================== */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.25);
+  padding: 6px 0;
+  font-size: 12px;
+  z-index: 5;
+}
+
+footer a {
+  color: white;
+  text-decoration: underline;
+  margin: 0 5px;
+}
+
+/* ===============================
+   FLOATING HEARTS (LIGHT)
+   =============================== */
+
+.heart {
+  position: fixed;
+  font-size: 14px;
+  opacity: 0.7;
+  animation: float 5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+/* Floating hearts & roses */
+.floating {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  opacity: 0.6;
+  animation: floatUp linear forwards;
+  pointer-events: none; /* never block clicks */
+  z-index: 0; /* stay behind everything */
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.7;
+  }
+  to {
+    transform: translateY(-110vh) scale(1.2);
+    opacity: 0;
+  }
+}
